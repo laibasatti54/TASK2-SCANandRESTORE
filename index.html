@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halide Lab: plans for film scanning and restoration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <main id="view-plans" class="view">
+    <div class="intro">
+      <h1>Plans for scanning and restoring your film</h1>
+      <p>Send us your negatives or upload your own scans. Pick the plan that fits how much film you shoot, then try the editor below before you commit.</p>
+    </div>
+
+    <div class="controls">
+      <div class="filter-field">
+        <label for="catSelect">Show</label>
+        <div class="select-wrap">
+          <select id="catSelect" class="filter-select">
+            <option value="All">All plans</option>
+            <option value="Basic">Basic plans</option>
+            <option value="Premium">Premium plans</option>
+          </select>
+        </div>
+      </div>
+      <div class="billing">
+        <span class="lbl on" id="lblMonthly">Monthly</span>
+        <button class="switch" id="billingSwitch" role="switch" aria-checked="false" aria-label="Bill yearly"><span class="knob"></span></button>
+        <span class="lbl" id="lblYearly">Yearly</span>
+        <span class="save-tag">Save 20%</span>
+      </div>
+    </div>
+
+    <section id="grid" class="grid" aria-live="polite" aria-label="Plans"></section>
+
+    <section class="demo" id="demo" aria-labelledby="demoTitle">
+      <div class="demo-head">
+        <h2 id="demoTitle">Try the editor</h2>
+        <p>Adjust a sample frame with the same controls each plan unlocks. Pick "Preview plan" on any card to load its settings.</p>
+      </div>
+      <div class="demo-body">
+        <div class="frame">
+          <div class="stage" id="photo" role="img" aria-label="Sample film frame">
+            <svg class="scene" viewBox="0 0 400 260" aria-hidden="true">
+            <rect width="400" height="260" fill="#6C8FA8"/>
+            <rect y="90" width="400" height="80" fill="#D69A55"/>
+            <circle cx="290" cy="120" r="34" fill="#F1D28A"/>
+            <path d="M0 150 L70 104 L130 138 L210 92 L300 142 L400 110 L400 176 L0 176 Z" fill="#3F5566"/>
+            <rect y="170" width="400" height="90" fill="#2B4457"/>
+            <path d="M40 190 H360 M80 206 H320 M120 222 H280" stroke="#F1D28A" stroke-width="3" opacity=".55"/>
+            
+          </svg>
+            <img class="demo-img" src="images/demo.jfif" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
+            <svg class="scratches" viewBox="0 0 400 260" preserveAspectRatio="none" aria-hidden="true">
+              <g class="dust" id="dust" stroke="#F4F1E6" fill="none" stroke-width="1.4" opacity="1">
+              <path d="M60 20 L64 118"/><path d="M182 0 L176 74"/><path d="M330 60 L336 150"/><path d="M250 190 L246 250"/>
+              <circle cx="110" cy="60" r="2.4" fill="#F4F1E6"/><circle cx="220" cy="140" r="1.8" fill="#F4F1E6"/><circle cx="350" cy="30" r="2.2" fill="#F4F1E6"/><circle cx="90" cy="220" r="2" fill="#F4F1E6"/>
+            </g>
+            </svg>
+          </div>
+        </div>
+        <div class="panel">
+          <p class="now">Previewing: <span id="demoPlan">Scan</span></p>
+          <div class="field"><label for="exp">Exposure <output id="expOut">100%</output></label><input type="range" id="exp" min="60" max="140" value="100"></div>
+          <div class="field"><label for="con">Contrast <output id="conOut">100%</output></label><input type="range" id="con" min="60" max="140" value="100"></div>
+          <div class="field"><label for="sat">Color <output id="satOut">100%</output></label><input type="range" id="sat" min="0" max="160" value="100"></div>
+          <label class="check"><input type="checkbox" id="dustToggle"> Remove dust and scratches</label>
+          <button class="btn ghost" id="resetDemo" type="button">Reset frame</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Halide Lab. Film scanning and restoration.</p>
+      <nav aria-label="Legal">
+        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
+      </nav>
+    </footer>
+  </main>
+
+  <article id="view-terms" class="view legal" hidden>
+    <a class="back" href="#plans">Back to plans</a>
+    <h1>Terms of Service</h1>
+    <p class="updated">Last updated September 29, 2026</p>
+    <h2>Using the service</h2>
+    <p>Halide Lab scans, restores and stores film images that you send us or upload. You confirm that you own the images or have permission to use them, and that they do not break the law.</p>
+    <h2>Plans and billing</h2>
+    <p>Plans renew each month or each year, depending on the billing period you choose. You can cancel at any time from your account. Cancelling stops the next renewal and you keep access until the end of the paid period.</p>
+    <h2>Your files</h2>
+    <p>You keep all rights to your images. We receive a limited license to process and store them only to provide the service you ordered. Physical film is returned within 30 days of scanning unless you ask us to recycle it.</p>
+    <h2>Refunds</h2>
+    <p>If a scan does not meet the quality described on your plan, contact us within 14 days and we will redo it or refund that order.</p>
+    <h2>Changes</h2>
+    <p>We may update these terms. We will post the new version here and email active customers before material changes take effect.</p>
+  </article>
+
+  <article id="view-privacy" class="view legal" hidden>
+    <a class="back" href="#plans">Back to plans</a>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated September 29, 2026</p>
+    <h2>What we collect</h2>
+    <p>Your name, email, shipping address and payment details, plus the images you send or upload. Payment card numbers are handled by our payment processor and never stored on our servers.</p>
+    <h2>How we use it</h2>
+    <p>To scan, restore, store and return your work, to process payments, and to contact you about your orders. We do not sell your images or personal data, and we do not use your images to train models.</p>
+    <h2>Sharing</h2>
+    <p>We share data only with providers that help run the service, such as payment, shipping and storage companies, under agreements that limit their use of it.</p>
+    <h2>Retention and deletion</h2>
+    <p>We keep your images while your plan is active and for 60 days after it ends. You can export or delete your images and account at any time from settings, or by writing to privacy@halidelab.example.</p>
+    <h2>Your rights</h2>
+    <p>Depending on where you live, you may have the right to access, correct, export or delete your data. Contact us and we will respond within 30 days.</p>
+  </article>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
